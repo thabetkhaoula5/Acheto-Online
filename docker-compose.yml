@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  mongodb:
+    image: mongo:7
+    container_name: acheto-mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: acheto123
+      MONGO_INITDB_DATABASE: acheto
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - acheto-network
+
+volumes:
+  mongodb_data:
+
+networks:
+  acheto-network:
+    driver: bridge
